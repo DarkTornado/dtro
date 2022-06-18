@@ -1,0 +1,79 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="user-scalable=no width=device-width" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>대구 도시철도 운행 정보</title>
+</head>
+<style>
+body{
+ margin: 0px;
+}
+div.title{
+ color:#FFFFFF;
+ font-size:21;
+ background:#000000;
+ padding:13px;
+ box-shadow:0px 4px 5px 0px rgba(0, 0, 0, 0.3);
+ width:100%;
+ position:fixed;
+}
+div.content{
+ margin: 50px 20px;
+}
+table{
+ width: 100%;
+ border-collapse: collapse;
+}
+table.lines{
+ margin: 20px 0px;
+}
+.lines{
+ border: 1px solid #000000;
+}
+table#data{
+ border-collapse: collapse;
+ border-top: 1px solid #000000;
+ border-bottom: 1px solid #000000;
+}
+td{
+ text-align: center;
+ border-top: 1px solid #000000;
+ padding: 5px;
+}
+td.metro{
+ border-right: 1px solid #000000;
+ width:40px;
+}
+</style>
+<body>
+<div class=title>대구 도시철도 운행 정보</div>
+<br>
+<div class=content>
+<table class=lines>
+<tr>
+<td class=lines>1호선</td>
+<td class=lines>2호선</td>
+<td class=lines>3호선</td>
+</tr>
+</table>
+<table id='data'>
+</table>
+</div>
+<script>
+var data = [{"station":"설화명곡","up":0,"down":0},{"station":"화원","up":0,"down":1},{"station":"대곡","up":1,"down":0},{"station":"진천","up":0,"down":0},{"station":"월배","up":0,"down":0},{"station":"상인","up":0,"down":1},{"station":"월촌","up":1,"down":0},{"station":"송현","up":0,"down":0},{"station":"서부정류장","up":0,"down":0},{"station":"대명","up":0,"down":0},{"station":"안지랑","up":0,"down":1},{"station":"현충로","up":1,"down":0},{"station":"영대병원","up":0,"down":0},{"station":"교대","up":0,"down":0},{"station":"명덕","up":0,"down":0},{"station":"반월당","up":0,"down":1},{"station":"중앙로","up":1,"down":0},{"station":"대구역","up":0,"down":0},{"station":"칠성시장","up":0,"down":0},{"station":"신천","up":0,"down":1},{"station":"동대구","up":0,"down":0},{"station":"동구청","up":1,"down":0},{"station":"아양교","up":0,"down":0},{"station":"동촌","up":0,"down":0},{"station":"해안","up":0,"down":1},{"station":"방촌","up":1,"down":0},{"station":"용계","up":0,"down":0},{"station":"율하","up":0,"down":0},{"station":"신기","up":0,"down":1},{"station":"반야월","up":1,"down":0},{"station":"각산","up":0,"down":0},{"station":"안심","up":0,"down":0}];
+var ups = ['↑', '●'];
+var downs = ['↓', '●'];
+var src = '';
+data.forEach((e)=>{
+src += '<tr>';
+src += '<td class=metro>'+ups[e.up]+'</td>';
+src += '<td class=metro>'+downs[e.down]+'</td>';
+src += '<td>'+e.station+'</td>';
+src += '</tr>';
+});
+document.getElementById('data').innerHTML = src;
+alert('지금 보이는건 실시간 운행정보 아님\n믿으면 골룸');
+</script>
+</body>
+</html>
