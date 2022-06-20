@@ -61,6 +61,7 @@ td.line{
 }
 </style>
 <body>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <div class=title>대구 도시철도 운행 정보</div>
 <br>
 <div class=content>
@@ -111,8 +112,8 @@ data[line+'호선'].forEach((e)=>{
 		}
 	}
 });
-var ups = ['↑', '●'];
-var downs = ['↓', '●'];
+var ups = ['↑', '<i class=\'material-icons\'>&#xE535;</i>'];
+var downs = ['↓', '<i class=\'material-icons\'>&#xE535;</i>'];
 var color = ['', '#d93f5c', '#00aa80', '#ffb100'][line];
 var src = '<tr><td class=title colspan=4>대구 '+line+'호선</td></tr>';
 result.forEach((e)=>{
