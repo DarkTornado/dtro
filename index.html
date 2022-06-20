@@ -23,6 +23,7 @@ div.content{
 }
 table{
  width: 100%;
+ border: 1px solid #000000;
  border-collapse: collapse;
 }
 table.lines{
@@ -38,12 +39,25 @@ table#data{
 }
 td{
  text-align: center;
+ border-top: 1px solid #DBDBDB;
+ padding: 5px;
+}
+td.title{
+ font-weight: bold;
  border-top: 1px solid #000000;
+ border-bottom: 1px solid #000000;
  padding: 5px;
 }
 td.metro{
- border-right: 1px solid #000000;
  width:40px;
+}
+td.station{
+ border-left: 1px solid #000000;
+}
+td.line{
+ width: 3px;
+ padding: 0px;
+ border: 0px;
 }
 </style>
 <body>
@@ -76,7 +90,6 @@ var _min = min;
 if(_min<10) _min = '0'+_min;
 var time = _hour+':'+_min;
 
-var result = {};
 var result = [];
 lines[line].forEach((e) => result.push({'station':e,'up':0,'down':0}));
 data[line+'호선'].forEach((e)=>{
@@ -100,12 +113,14 @@ data[line+'호선'].forEach((e)=>{
 });
 var ups = ['↑', '●'];
 var downs = ['↓', '●'];
-var src = '';
+var color = ['', '#d93f5c', '#00aa80', '#ffb100'][line];
+var src = '<tr><td class=title colspan=4>대구 '+line+'호선</td></tr>';
 result.forEach((e)=>{
 src += '<tr>';
 src += '<td class=metro>'+ups[e.up]+'</td>';
+src += '<td class=line style="background-color:'+color+';"></td>';
 src += '<td class=metro>'+downs[e.down]+'</td>';
-src += '<td>'+e.station+'</td>';
+src += '<td class=station>'+e.station+'</td>';
 src += '</tr>';
 });
 document.getElementById('data').innerHTML = src;
