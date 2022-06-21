@@ -60,6 +60,9 @@ td.line{
  padding: 0px;
  border: 0px;
 }
+td.lines{
+ font-weight: bold;
+}
 </style>
 <body>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -68,9 +71,9 @@ td.line{
 <div class=content>
 <table class=lines>
 <tr>
-<td class=lines onclick='applyData(1);'>1호선</td>
-<td class=lines onclick='applyData(2);'>2호선</td>
-<td class=lines onclick='applyData(3);'>3호선</td>
+<td class=lines onclick='applyData(1);' style="color:#d93f5c;">1호선</td>
+<td class=lines onclick='applyData(2);' style="color:#00aa80;">2호선</td>
+<td class=lines onclick='applyData(3);' style="color:#ffb100;">3호선</td>
 </tr>
 </table>
 <table id='data'>
@@ -116,7 +119,7 @@ data[line+'호선'].forEach((e)=>{
 var ups = ['↑', '<i class=\'material-icons\'>&#xE535;</i>'];
 var downs = ['↓', '<i class=\'material-icons\'>&#xE535;</i>'];
 var color = ['', '#d93f5c', '#00aa80', '#ffb100'][line];
-var src = '<tr><td class=title colspan=4>대구 '+line+'호선</td></tr>';
+var src = '<tr><td class=title colspan=4 style="color:'+color+';" bgcolor=#EEEEEE>대구 '+line+'호선</td></tr>';
 result.forEach((e)=>{
 src += '<tr>';
 src += '<td class=metro>'+ups[e.up]+'</td>';
