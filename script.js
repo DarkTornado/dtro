@@ -46,9 +46,9 @@ function applyData(line) {
     var src = '<tr><td class=title colspan=4 style="color:' + color + ';" bgcolor=#EEEEEE>대구 ' + line + '호선</td></tr>';
     result.forEach((e) => {
         src += '<tr>';
-        src += '<td class=metro>' + ups[e.up] + '</td>';
-        src += '<td class=line style="background-color:' + color + ';"></td>';
         src += '<td class=metro>' + downs[e.down] + '</td>';
+        src += '<td class=line style="background-color:' + color + ';"></td>';
+        src += '<td class=metro>' + ups[e.up] + '</td>';
         src += '<td class=station>' + e.station + '</td>';
         src += '</tr>';
     });
