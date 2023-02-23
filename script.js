@@ -9,11 +9,14 @@ function applyData(line) {
     var now = new Date();
     var hour = now.getHours();
     var min = now.getMinutes();
+    var sec = now.getSeconds();
     var _hour = hour;
     if (_hour < 10) _hour = '0' + _hour;
     var _min = min;
     if (_min < 10) _min = '0' + _min;
-    var time = _hour + ':' + _min;
+    var _sec = sec;
+    if (_sec < 10) _sec = '0' + _sec;
+    var time = _hour + ':' + _min + ':' + _sec;
 
     var result = [];
     lines[line].forEach((e) => result.push({
@@ -63,7 +66,7 @@ var data = {};
 
 function readData() {
     var req = new XMLHttpRequest();
-    req.open("GET", "./대구_20220516.csv", false);
+    req.open("GET", "./대구.csv", false);
     req.onreadystatechange = () => {
         if (req.readyState === 4) {
             if (req.status === 200 || req.status == 0) {
