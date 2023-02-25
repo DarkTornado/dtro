@@ -89,14 +89,6 @@ function parseData(_data) {
     else if (day == 6) day = '토요일';
     else day = '평일';
 
-    var hour = now.getHours();
-    var min = now.getMinutes();
-    var _hour = hour;
-    if (_hour < 10) _hour = '0' + _hour;
-    var _min = min;
-    if (_min < 10) _min = '0' + _min;
-    var time = _hour + ':' + _min;
-
     data['1호선'] = [];
     data['2호선'] = [];
     data['3호선'] = [];
