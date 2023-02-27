@@ -65,17 +65,11 @@ function applyData(line) {
 var data = {};
 
 function readData() {
-    var req = new XMLHttpRequest();
-    req.open("GET", "./대구.csv", false);
-    req.onreadystatechange = () => {
-        if (req.readyState === 4) {
-            if (req.status === 200 || req.status == 0) {
-                var allText = req.responseText;
-                parseData(allText);
-            }
-        }
-    }
-    req.send(null);
+    fetch("./대구.csv")
+        .then((response) => response.text())
+        .then((data) => {
+            parseData(data);
+        });
 }
 readData();
 
