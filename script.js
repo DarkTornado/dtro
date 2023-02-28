@@ -8,15 +8,10 @@ lines[3] = ['칠곡경대병원', '학정', '팔거', '동천', '칠곡운암', 
 function applyData(line) {
     var now = new Date();
     var hour = now.getHours();
+    if (hour == 0) hour = 24;
     var min = now.getMinutes();
     var sec = now.getSeconds();
-    var _hour = hour;
-    if (_hour < 10) _hour = '0' + _hour;
-    var _min = min;
-    if (_min < 10) _min = '0' + _min;
-    var _sec = sec;
-    if (_sec < 10) _sec = '0' + _sec;
-    var time = _hour + ':' + _min + ':' + _sec;
+	var time = 60 * 60 * hour + 60 * min + sec;
 
     var result = [];
     lines[line].forEach((e) => result.push({
@@ -25,13 +20,13 @@ function applyData(line) {
         'down': 0
     }));
     data[line + '호선'].forEach((e) => {
-        var start = e.time[0].time;
-        var end = e.time[e.time.length - 1].time;
+        var start = time2sec(e.time[0].time);
+        var end = time2sec(e.time[e.time.length - 1].time);
         if (start > time) return;
         if (end < time) return;
 
         for (var n = e.time.length - 1; n >= 0; n--) {
-            var tym = e.time[n].time;
+            var tym = time2sec(e.time[n].time);
             if (tym < time) {
                 var sta = e.time[n].station;
                 var index = lines[line].indexOf(sta);
@@ -108,5 +103,12 @@ function parseData(_data) {
         data[line].push(info);
     });
 
+}
+
+function time2sec(time) {
+    var t = time.split(':');
+    t[0] = Number(t[0]);
+    if(t[0]==0) t[0] = 24;
+    return t[0] * 60 * 60 + Number(t[1]) * 60 + Number(t[2]);
 }
 
