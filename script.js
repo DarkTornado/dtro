@@ -27,10 +27,10 @@ function applyData(line) {
         if (start > time) return;
         if (end < time) return;
 
-        for (var n = e.time.length - 1; n >= 0; n--) {
+        for (var n = e.time.length - 2; n >= 0; n--) {
             var tym = time2sec(e.time[n].time);
             if (tym < time) {
-                var sta = e.time[n].station;
+                var sta = e.time[n + 1].station;
                 var index = lines[line].indexOf(sta);
                 if (index == -1) console.log(JSON.stringify(e.time[n]));
                 var train = Number(e.trainNo);
